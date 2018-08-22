@@ -9,8 +9,12 @@ def getName(url = "http://www.pythonscraping.com/pages/warandpeace.html"):
     except (HTTPError, URLError) as e:
         print("Name couldn't found")
         sleep(2)
+
+        # 失败后重连3次
         for i in range(3):
-            getName()
+            getName(url)
+            if html is not "":
+                break
     else:
         bsObj = BeautifulSoup(html)
     # findAll(tag, attributes, recursive, text, limit, keywords)
