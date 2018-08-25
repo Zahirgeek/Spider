@@ -33,6 +33,7 @@ import re
 
 random.seed(datetime.datetime.now())
 
+
 def get_links(articleUrl):
     html = urlopen("https://en.wikipedia.org" + articleUrl)
     bsObj = BeautifulSoup(html, "html.parser")
@@ -40,6 +41,7 @@ def get_links(articleUrl):
 
 
 links = get_links("/wiki/Kevin_Bacon")
+print(len(links))
 while len(links) > 0:
     newArticle = links[random.randint(0, len(links)-1)].attrs["href"]
     print(newArticle)
